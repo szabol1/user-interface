@@ -6,7 +6,7 @@ router
         try{
             const userId = req.user._id
             //const topicId = req.topic._id
-            const post = await postModel.createPost(userId, req.body.contents, topicId)
+            const post = await postModel.createPost(userId, req.body.contents)
             res.send(post)
         }catch(error){
             res.status(401).send({message:error.message})

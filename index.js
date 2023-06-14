@@ -7,7 +7,7 @@ require("dotenv").config();
 //const userRoutes = require("./Server/routes/user");n
 const userRoutes = require('./server/routes/user')
 const postRoutes = require('./server/routes/posts')
-mongoose.connect(process.env.dbURL)
+mongoose.connect(process.env.DBURL)
     .then(console.log("DB Connected!"))
     .catch(error => console.log("error!"));
 
