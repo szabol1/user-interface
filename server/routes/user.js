@@ -14,6 +14,7 @@ router
     .post('/register', async (req, res)=>{
         try{
             const user = await userModel.register(req.body.username, req.body.password,req.body.email)
+            res.send({user,password:undefined})
         }catch(error){
             res.status(401).send({message: error.message})
         }

@@ -4,9 +4,7 @@ const router = express.Router()
 router
     .post('/create', async(req,res)=>{
         try{
-            const userId = req.user._id
-            //const topicId = req.topic._id
-            const post = await postModel.createPost(userId, req.body.contents)
+            const post = await postModel.createPost(req.body.userId, req.body.contents, req.body.topicId)
             res.send(post)
         }catch(error){
             res.status(401).send({message:error.message})
@@ -14,8 +12,7 @@ router
     })
     .post('/getAll', async (req, res)=>{
         try{
-            const userId = req.user._id
-            const post = await postModel.getAllPosts(userId)
+            const post = await postModel.getAllPosts(req.body.userId)
             res.send(post)
         }catch(error){
             res.status(401).send({message: error.message})
