@@ -4,17 +4,18 @@
   "description": "simple textbased social media app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
-    "dev": "concurrently \"npm run server\"\"npm run client\"",
-    "client": "npm start ==prefix client"
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongo": "^0.1.0",
     "mongodb": "^5.6.0",
     "mongoose": "^7.2.2"

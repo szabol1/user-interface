@@ -1,26 +1,45 @@
 import './App.css';
-import Navbar from "./components/Navbar"
-import LoginForm from "./components/LoginForm"
-import RegisterForm from "./components/RegisterForm"
-import backgroundImage from './wild-forest-food-seamless-random-pattern-with-orange-mushroom-doodle-elements-pink-background-vector.jpg';
+import { useState } from 'react';
+import Navbar from "./components/pages/Navbar"
+import LoginForm from "./components/pages/LoginForm"
+import RegisterForm from "./components/pages/RegisterForm"
+import HomePage from "./components/pages/HomePage"
+import ViewProfile from "./components/pages/ViewProfile"
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import PostForm from "./components/pages/PostForm";
+
+
 
 function App() {
+
+
+    const [username, setUsername] = useState('');//not sure how else to get the current users userid or username?
+    const [userId, setUserId] = useState('');//googled a lot
+
+    const handleLogin = (data) => {
+        setUsername(data.username);
+        setUserId(data.userId);
+
+    };
+
   return (
     <div className="App">
-        < Navbar/>
-        <div style={{
-            backgroundImage: `url(${backgroundImage})`
-        }}>
-        </div>
-            <div className = "forms-wrapper">
-                <LoginForm />
-                <RegisterForm />
+        <BrowserRouter>
+            < Navbar/>
+            <div className = "form-Wrapper">
+            <Routes>
+                <Route path ="LoginForm" element={<LoginForm onLogin={handleLogin} />}/>
+                <Route path ="RegisterForm" element={<RegisterForm />}/>
+                <Route path ="HomePage" element ={<HomePage />}/>
+                <Route path="ViewProfile" element={<ViewProfile prop={username}/>}>
+                       <Route path={"PostForm"} element={<PostForm prop={userId}/>}/>
+                </Route>
+            </Routes>
             </div>
 
+        </BrowserRouter>
     </div>
+
   );
 }
-//I want to add login and register to the nav bar as functional links but so far what ive tried was non functional
-//Im also having an issue with the background image rendering- Ive tried referencing it a couple different ways and neither will render it?
-//so everything looks pretty boring right now 
 export default App;

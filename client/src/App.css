@@ -1,18 +1,26 @@
 .App {
   text-align: center;
+  background-image: url('./wild-forest-food-seamless-random-pattern-with-orange-mushroom-doodle-elements-pink-background-vector.jpg');
+  background-size: cover;
+  min-height: 100vh; /* Ensure the container takes up the full viewport height */
 }
 
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-Wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+.container {
+
+}
+
 
 .App-link {
   color: #61dafb;
@@ -25,4 +33,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+.post-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-header h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.post-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+.post-content p {
+  font-size: 16px;
+  line-height: 1.5;
 }

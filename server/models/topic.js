@@ -4,6 +4,7 @@ const user = require('../model/user')
 const topicSchema = new mongoose.Schema({
     title:String,
     about: String,
+    posts:[{type:Schema.Types.ObjectId, ref:'posts'}],
     creator: {type: Schema.Types.ObjectId, ref:'user'},
     followers: [{type:Schema.Types.ObjectId, ref: 'user'}]
 

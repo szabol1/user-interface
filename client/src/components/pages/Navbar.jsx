@@ -1,9 +1,9 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 
 function Navbar(){
     return (
-        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#ff8800' }}>
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#cb8535', marginBottom: "100px"}}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">TopicTalk</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -14,16 +14,16 @@ function Navbar(){
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
+                            <Link className="nav-link active" to={"/HomePage"}>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Register</a>
+                            <Link className="nav-link active" to={"/RegisterForm"}>Register</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Login</a>
+                            <Link className="nav-link active" to={"/LoginForm"}>Login</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Profile</a>
+                            <Link className="nav-link active" to={"/ViewProfile"}>Profile</Link>
                         </li>
 
                         <li className="nav-item dropdown">
@@ -40,9 +40,6 @@ function Navbar(){
                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-                        </li>
                     </ul>
                     <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -50,7 +47,9 @@ function Navbar(){
                     </form>
                 </div>
             </div>
+            <Outlet/>
         </nav>
+
     );
 }
 

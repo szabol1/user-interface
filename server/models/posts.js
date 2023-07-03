@@ -1,29 +1,44 @@
 const mongoose = require('mongoose')
 const {Schema} = require("mongoose");
+const User = require('../models/user');
 const postSchema = new mongoose.Schema({
+    title: String,
     userId: {type: Schema.Types.ObjectId, ref:'user'},
-    contents:String,
-    topicId: {type:Schema.Types.ObjectId, ref: 'topic'},
+    content:String
 })
 
 const post = mongoose.model("post",postSchema)
 
-async function createPost(userId, contents,topicId) {
+async function createPost(title, userId, content) {
     const newPost = await post.create({
+        "title": title,
         "userId": userId,
-        "contents": contents,
-        "topicId": topicId
+        "content": content
     })
     return newPost;
 }
 async function deletePost(id){
-    await post.deleteOne({"_id":id})
+    await post.findByIdAndDelete(id);
 }
-async function editPost(userId, id, contents){
-    await post.updateOne({"userId":userId, "_id":id, "contents":contents})
+async function editPost(id, content){
+    await post.updateOne({"_id":id, "content":content})
 }
-async function getAllPosts(userId){
+async function getUserAllPosts(userId){
     const posts = await post.find({"userId": userId})
     return posts
 }
-module.exports = {createPost, getAllPosts,editPost,deletePost}
+async function getFollowedUserPost(userId){//get followed users posts
+    const currentUser = await User.find(userId);
+
+    if (!currentUser) {
+        throw new Error('User not found');
+    }
+
+    const followedUsers = currentUser.following;
+
+    const followedUserPosts = await post.find({ userId: { $in: followedUsers } });
+
+    return followedUserPosts;
+
+}
+module.exports = {createPost, getUserAllPosts,editPost,deletePost, getFollowedUserPost}

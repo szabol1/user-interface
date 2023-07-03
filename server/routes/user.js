@@ -6,6 +6,7 @@ router
     .post('/login', async(req,res)=>{
         try{
             const user = await userModel.login(req.body.username,req.body.password)
+            console.log("route sent")
             res.send({...user,password:undefined})
         }catch(error){
             res.status(401).send({message:error.message})
@@ -13,7 +14,7 @@ router
     })
     .post('/register', async (req, res)=>{
         try{
-            const user = await userModel.register(req.body.username, req.body.password,req.body.email)
+            const user = await userModel.register(req.body.email, req.body.username, req.body.password)
             res.send({user,password:undefined})
         }catch(error){
             res.status(401).send({message: error.message})
@@ -36,4 +37,5 @@ router
             res.status(401).send({message: error.message})
         }
     })
+
 module.exports = router;
