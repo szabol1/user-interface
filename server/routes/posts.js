@@ -2,12 +2,13 @@ const express = require("express")
 const postModel = require("../models/posts")
 const router = express.Router()
 
+
 router
     .post('/create', async(req,res)=>{
         try{
             console.log(req.body)
             const post = await postModel.createPost(req.body.title, req.body.userId, req.body.content)
-            res.send(...post)
+            res.send(post)
         }catch(error){
             res.status(401).send({message:error.message})
         }
@@ -15,7 +16,8 @@ router
     .post('/getAll', async (req, res)=>{
         try{
             const post = await postModel.getUserAllPosts(req.body.userId)
-            res.send(...post)
+            console.log('Fetched user posts:', post);
+            res.send(post)
         }catch(error){
             res.status(401).send({message: error.message})
         }

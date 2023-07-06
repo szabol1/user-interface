@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
 import Post from "./PostCard"
 import PostForm from "./PostForm";
-//mapping all the posts from user
+import UserPosts from "./UserPosts";
+
+//mapping all the posts from user with UserPosts
 //and have the post form to create a new post at top
 function ViewProfile(prop){
+
+    const USER = JSON.parse(localStorage.getItem('user'));
 
 
     const [posts, setPosts] = useState([
 
     ]);
-
     const handleDeletePost = (postId) => {
-        // Perform deletion logic using the post ID
+
         const updatedPosts = posts.filter((post) => post.id !== postId);
         setPosts(updatedPosts);
     };
@@ -19,15 +22,9 @@ function ViewProfile(prop){
 
     return(
         <div>
-            <h1></h1>
+            <h1>{USER.username}</h1>
             <PostForm />
-            {posts.map((post) => (
-                <Post
-                    title={post.title}
-                    content = {post.content}
-                    onDelete={handleDeletePost}
-                />
-            ))}
+            <UserPosts />
         </div>
     );
 

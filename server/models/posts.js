@@ -24,8 +24,8 @@ async function editPost(id, content){
     await post.updateOne({"_id":id, "content":content})
 }
 async function getUserAllPosts(userId){
-    const posts = await post.find({"userId": userId})
-    return posts
+    const Posts = await post.find({"userId": userId})
+    return Posts
 }
 async function getFollowedUserPost(userId){//get followed users posts
     const currentUser = await User.find(userId);
@@ -41,4 +41,5 @@ async function getFollowedUserPost(userId){//get followed users posts
     return followedUserPosts;
 
 }
+mongoose.model("Post",postSchema)
 module.exports = {createPost, getUserAllPosts,editPost,deletePost, getFollowedUserPost}

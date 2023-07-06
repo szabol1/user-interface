@@ -37,5 +37,13 @@ router
             res.status(401).send({message: error.message})
         }
     })
+    .get('/getUser', async (req,res)=>{
+        try{
+            const user = await userModel.getUser(req.body)
+            res.send({user})
+        }catch(error){
+            res.status(401).send({message: error.message})
+        }
+    })
 
 module.exports = router;

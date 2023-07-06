@@ -60,7 +60,7 @@ async function getUsername() {
     return user.username;
 }
 
-async function getUserID() {
+async function getUserId() {
     const user = await user.findOne()
     return user._id
 }
@@ -72,4 +72,4 @@ async function displayFollowedTopics(username){
 }
 
 
-module.exports = {login, register, deleteUser, updatePassword, getUsername, getUserId}
+module.exports = {login, register, deleteUser, updatePassword, getUsername, getUserId, getUser}

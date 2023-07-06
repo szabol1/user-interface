@@ -21,6 +21,49 @@
 
 }
 
+.text-post {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.text-post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-post-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.text-post-author {
+    font-size: 14px;
+    color: #888;
+    margin-left: 10px;
+}
+
+.text-post-content {
+    margin-bottom: 10px;
+}
+
+.text-post-footer {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #888;
+}
+
+.text-post-timestamp {
+    margin-right: 10px;
+}
+
+.text-post-upvotes {
+    font-weight: bold;
+}
+
 
 .App-link {
   color: #61dafb;

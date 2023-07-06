@@ -2,7 +2,7 @@ import UserPosts from "./UserPosts"
 import React, {useState, useEffect} from "react";
 import {fetchData} from "../../main";
 import {useState} from "react";
-function ProfileCard(){
+function DeletePost(){
 
     const [loggedInUsername, setLoggedInUsername] = useState('');
 
@@ -42,4 +42,4 @@ function ProfileCard(){
 }
 
 
-export default ProfileCard
+export default DeletePost

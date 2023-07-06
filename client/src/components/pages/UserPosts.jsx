@@ -5,34 +5,39 @@ import {useState} from "react";
 
 const UserPosts = () =>{
 
-    const[userId, setUserId] = useState('')
+    const USER = JSON.parse(localStorage.getItem('user'));
+    const userId = USER._id
 
 
-    useEffect(()=>{
-        async function fetchUserData(){
-        try{
-            const fetchedUserId = await fetchData('/posts/getUserId', {}, 'POST')
-            setUserId(fetchedUserId);
-        } catch(error){
-            console.log('Error', error)
-        }
-    }
-        fetchUserData()
-    },[])
+    const[userPosts, setUserPosts] = useState([])
 
-
-    const[userPosts, setUserPosts] = useState('')
     useEffect(()=>{
         async function fetchUserPosts(){
             try{
-                const fetchedUserId = await fetchData('/posts/getUserAllPosts', {userId}, 'POST')
-
+                const fetchedUserPosts = await fetchData('/posts/getAll', {userId}, 'POST')
+                setUserPosts(fetchedUserPosts)
             } catch(error){
                 console.log('Error', error)
             }
         }
         fetchUserPosts()
-    },[])
+    },[userId]);
 
+    return(
+        <div>
+            {userPosts.length === 0 ? (
+                <p>No posts available</p>
+            ) : (
+                <ul>
+                    {userPosts.map((userPost) => (
+                        <li key={userPost._id} content={userPost.content}>
+                            {userPost.title}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 
 }
+export default UserPosts

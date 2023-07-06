@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, createContext} from 'react';
 import {fetchData} from "../../main";
 import {useNavigate} from "react-router-dom";
+import PostForm from "./PostForm";
+export const DataContext = createContext();//creates user data
+function LoginForm({onLogin}) {//s
 
-function LoginForm({onLogin}) {
+
     const navigate = useNavigate();
 
     const [user, setUser] =  useState({//initial state sort of like a model
@@ -23,8 +26,9 @@ function LoginForm({onLogin}) {
             .then((data) =>{
                 if(!data.message){
                     navigate('/ViewProfile')
-                    onLogin(data);
                     console.log(data)
+                    onLogin(data)
+                    localStorage.setItem("user", JSON.stringify(data))
                 }
             })
             .catch((error)=>{
@@ -34,6 +38,7 @@ function LoginForm({onLogin}) {
     }
 
     return (
+
         <div className="container">
 
             <form onSubmit={onSubmit} className="login" style={{maxWidth:"400px"}} >
@@ -48,6 +53,7 @@ function LoginForm({onLogin}) {
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+
         </div>
     );
 }
