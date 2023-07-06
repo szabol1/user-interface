@@ -1,6 +1,6 @@
 //just getting user posts and then mapping them using userId
 import React, {useEffect} from 'react';
-import { fetchData} from "../../main";
+import {fetchData} from "../../main";
 import {useState} from "react";
 
 const UserPosts = () =>{

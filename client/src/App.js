@@ -9,11 +9,16 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import PostForm from "./components/pages/PostForm";
 import {fetchData} from "./main";
 
+
+//okay so the biggest issue Ive had is for some reason when You register and it navigates to the register page
+//it doesnt show the username even though im doing the same tactic as I am for Log in- which is working fine
+
 export const DataContext = createContext()//this did not work so I did a work around with local storage since states werent working either but Ill give it another go in the future
 
 function App() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isRegistered, setIsRegistered] = useState(false);
     const [username, setUsername] = useState('');
     const [userId, setUserId] = useState('');
 
@@ -22,6 +27,9 @@ function App() {
         setUserId(user._id);
         setIsLoggedIn(true)
     };
+    const handleRegister = (data) =>{
+        setIsRegistered(true)
+    }
 
     const user = (e) => {//soo many failed attempts to get User info without local storage alas all failed
         e.preventDefault();
@@ -40,18 +48,15 @@ function App() {
             })
 
     }
-
   return (
     <div className="App">
         <BrowserRouter>
-
             < Navbar/>
-
-            {isLoggedIn ? null :<div className = "form-Wrapper">{isLoggedIn ? null : < LoginForm onLogin={handleLogin}/>}</div>}
+            {isLoggedIn ? null : isRegistered ? null : <div className = "form-Wrapper">{isLoggedIn ? null : < LoginForm onLogin={handleLogin}/>}</div>}
             <div>
             <Routes>
                 <Route path ="LoginForm"  className = "form-Wrapper" element={<LoginForm onLogin={handleLogin} />}/>
-                <Route path ="RegisterForm"  className = "form-Wrapper" element={<RegisterForm />}/>
+                <Route path ="RegisterForm"  className = "form-Wrapper" element={<RegisterForm onRegister={handleRegister}/>}/>
                 <Route path ="HomePage" element ={<HomePage />}/>
                 <Route path="ViewProfile" element={<ViewProfile />}>
                        <Route path={"PostForm"} element={<PostForm prop={userId}/>}/>

@@ -40,7 +40,7 @@ function LoginForm({onLogin}) {//s
 
     return (
 
-        <div className="container">
+        <div className="form-Wrapper">
 
             <form onSubmit={onSubmit} className="login" style={{maxWidth:"500px"}} >
                 <h2>Log In</h2>

@@ -1,8 +1,11 @@
 import React from 'react';
 import { fetchData} from "../../main";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-const RegisterForm = () => {
+function RegisterForm ({onRegister}) {
+
+    const navigate = useNavigate();
 
     const [user, setUser] =  useState({//initial state sort of like a model
         email: '',
@@ -29,6 +32,9 @@ const RegisterForm = () => {
             .then((data) =>{
                 if(!data.message){
                     console.log(data)
+                    onRegister(data)
+                    localStorage.setItem("user", JSON.stringify(data))
+                    navigate('/ViewProfile')
                 }
             })
             .catch((error)=>{
@@ -38,7 +44,7 @@ const RegisterForm = () => {
     }
 
     return (
-        <div className="container" >
+        <div className={"form-Wrapper"}>
 
             <form onSubmit={onSubmit} className= "register" style={{ maxWidth: '400px'}}>
                 <h2>Registration Form</h2>
