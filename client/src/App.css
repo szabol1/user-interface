@@ -2,23 +2,91 @@
   text-align: center;
   background-image: url('./wild-forest-food-seamless-random-pattern-with-orange-mushroom-doodle-elements-pink-background-vector.jpg');
   background-size: cover;
-  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+  min-height: 100vh;
 }
 
 .form-Wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  padding: 20px;
+  padding: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.container {
+.post-form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type='text'],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+button[type='submit'] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type='submit']:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+.userPosts {
+    margin-bottom: 10px;
+}
+
+.userPosts::before {
+    content: '- ';
+}
+
+p {
+    font-style: italic;
+    color: #888;
+}
+
+.userPosts+.userPosts{
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 .text-post {

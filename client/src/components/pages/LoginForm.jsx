@@ -35,13 +35,14 @@ function LoginForm({onLogin}) {//s
                 console.log(error)
             })
 
+
     }
 
     return (
 
         <div className="container">
 
-            <form onSubmit={onSubmit} className="login" style={{maxWidth:"400px"}} >
+            <form onSubmit={onSubmit} className="login" style={{maxWidth:"500px"}} >
                 <h2>Log In</h2>
                 <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>

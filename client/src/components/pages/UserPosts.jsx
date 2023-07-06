@@ -24,14 +24,16 @@ const UserPosts = () =>{
     },[userId]);
 
     return(
-        <div>
+        <div className={"form-Wrapper"}>
             {userPosts.length === 0 ? (
                 <p>No posts available</p>
             ) : (
                 <ul>
                     {userPosts.map((userPost) => (
-                        <li key={userPost._id} content={userPost.content}>
+                        <li className={"userPosts"} key={userPost._id} >
                             {userPost.title}
+                            <div></div>
+                            {userPost.content}
                         </li>
                     ))}
                 </ul>

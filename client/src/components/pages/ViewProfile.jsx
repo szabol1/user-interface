@@ -22,10 +22,13 @@ function ViewProfile(prop){
 
     return(
         <div>
-            <h1>{USER.username}</h1>
+            <h1 className={"form-Wrapper"}>{USER.username}</h1>
             <PostForm />
-            <UserPosts />
+            <div>
+                <UserPosts />
+            </div>
         </div>
+
     );
 
 }
